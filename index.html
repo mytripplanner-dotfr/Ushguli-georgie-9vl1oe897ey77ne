@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Épopée Svanète: Au Cœur des Tours Millénaires </title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+      tailwind.config = {
+          theme: {
+              extend: {
+                  colors: {
+                      template: {
+                          sable: '#FFEDD5', 
+                          ocre: '#F97316',   // Orange Vibrant (Brand Accent)
+                          roche: '#0F172A',  // Bleu Nuit (Brand Dark)
+                          ciel: '#0D9488',   // Vert Lagon (Brand Primary)
+                          bg: '#FFF7ED'      // C'est un blanc cassé chaud, parfait pour la lecture et le contraste.
+                      }
+                  },
+                  fontFamily: {
+                      sans: ['"Plus Jakarta Sans"', 'sans-serif'], // Nouvelle police corps
+                      serif: ['"Outfit"', 'sans-serif'],           // Nouvelle police titres
+                  }
+              }
+          }
+      }
+    </script>
+    <style>
+        body { overflow-x: hidden; }
+        
+        /* 2. FORÇAGE DES GRAISSES (Comme sur la Landing Page) */
+        .font-sans { font-weight: 600 !important; }
+        .font-serif { font-weight: 800 !important; }
+
+        /* Ligne verticale de la timeline */
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #E5E7EB;
+            z-index: 0;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-line { left: 50%; margin-left: -1px; }
+        }
+
+        /* Style des cartes Info */
+        .tip-card {
+            border-left: 4px solid #F97316; /* ocre */
+            background-color: #FFF7ED;
+        }
+
+        /* Masquer la scrollbar de la nav mobile tout en gardant le scroll */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-template-bg text-template-roche antialiased">
+    
+    <nav id="nav-desktop" class="hidden md:flex fixed top-0 w-full z-50 bg-white/90 backdrop-blur border-b border-gray-200 py-4 px-8 justify-between items-center shadow-sm transition-transform duration-300 -translate-y-full">
+        <a href="#top" class="text-xl font-serif font-bold tracking-widest text-template-roche">MyTrip<span class="text-template-ocre">Planner</span></a>
+        <div class="space-x-6 text-sm font-bold text-gray-600">
+            <a href="#jour-1" class="nav-item-desktop hover:text-template-ocre transition">Le Parcours</a>
+            <a href="#pratique" class="nav-item-desktop hover:text-template-ocre transition">Infos Pratiques</a>
+        </div>
+    </nav>
+
+    <nav id="nav-mobile" class="md:hidden fixed top-0 w-full z-50 bg-white/95 backdrop-blur border-b border-gray-200 py-3 pl-4 overflow-x-auto hide-scroll whitespace-nowrap shadow-md transition-transform duration-300 -translate-y-full">
+        <div class="flex space-x-2 pr-4" id="mobile-menu-container">
+            <a href="#top" class="inline-block px-3 py-1 bg-template-roche text-white rounded-full text-xs font-bold shadow-sm">Top</a>
+            
+                <a href="#jour-1" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J1 Arrivée à Tbilissi, première immersion</a>
+            
+                <a href="#jour-2" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J2 Envol vers la Svanétie et découverte de Mestia</a>
+            
+                <a href="#jour-3" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J3 Trésors culturels et naturels de Mestia</a>
+            
+                <a href="#jour-4" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J4 Voyage vers Ushguli, le village hors du temps</a>
+            
+                <a href="#jour-5" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J5 Randonnée vers le glacier de Shkhara</a>
+            
+                <a href="#jour-6" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J6 Villages authentiques et retour à Mestia</a>
+            
+                <a href="#jour-7" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J7 Les Lacs de Koruldi et panoramas du Caucase</a>
+            
+                <a href="#jour-8" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J8 Retour à Tbilissi et exploration urbaine</a>
+            
+                <a href="#jour-9" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J9 Bains de soufre et modernité de Tbilissi</a>
+            
+                <a href="#jour-10" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J10 Départ de Tbilissi</a>
+            
+            <a href="#pratique" class="mobile-link inline-block px-3 py-1 border border-gray-300 text-gray-500 rounded-full text-xs font-bold">Infos</a>
+        </div>
+    </nav>
+
+    <header id="top" class="relative h-[60vh] flex items-center justify-center bg-cover bg-center"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url('https://raw.githubusercontent.com/mytripplanner-dotfr/Ushguli-georgie-9vl1oe897ey77ne/main/header.png" || 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021'}');">
+        
+        <div class="relative z-20 text-center text-white px-4 max-w-3xl animate-fade-in-up">
+            <p class="font-sans text-template-sable tracking-[0.2em] mb-4 uppercase text-xs font-bold">Feuille de Route</p>
+            <h1 class="font-serif text-5xl md:text-8xl mb-6 leading-tight drop-shadow-lg">USHGULI- GEORGIE</h1>
+            <p class="font-sans text-lg md:text-xl text-gray-100 mb-10 font-medium max-w-2xl mx-auto leading-relaxed">L'Épopée Svanète: Au Cœur des Tours Millénaires</p>
+            
+            <div class="flex flex-wrap justify-center gap-4 text-sm font-bold mb-10">
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">🗓️ 10 jours</span>
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">💰 2000 €</span>
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">🛬 6h00 depuis Paris avec escale</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="itineraire" class="max-w-6xl mx-auto px-4 py-16 relative">
+        <div class="text-center mb-16">
+            <h2 class="text-template-ocre font-bold tracking-normal text-4xl mt-2 uppercase font-serif">Votre Roadtrip</h2>
+        </div>
+
+        <div class="relative">
+            <div class="timeline-line"></div>
+            
+                <div id="jour-1" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 1</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Arrivée à Tbilissi, première immersion</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Après un vol depuis Paris, atterrissez à Tbilissi, la capitale géorgienne. Prenez le temps de vous installer et de faire une première balade légère pour vous imprégner de l'atmosphère unique de cette ville entre Orient et Occident. Une journée douce pour commencer l'aventure.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🛬 <strong>Arrivée à l'aéroport de Tbilissi</strong>: Récupérez vos bagages et prenez un taxi ou le bus pour rejoindre le centre-ville. L'aéroport est bien desservi et le trajet dure environ 30-45 minutes.</li><li>🛏️ <strong>Installation à l'hôtel</strong>: Déposez vos affaires et rafraîchissez-vous. Choisissez un hôtel dans le quartier historique pour faciliter les premières découvertes.</li><li>🚶‍♂️ <strong>Balade dans le quartier de Sololaki</strong>: Flânez dans les rues pittoresques de ce quartier ancien, admirez les balcons sculptés et les maisons colorées qui témoignent du riche passé de Tbilissi.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Ushguli-georgie-9vl1oe897ey77ne/main/jour1.jpg" class="w-full h-64 object-cover" alt="Jour 1">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">ℹ️ À savoir</p>
+                                <p class="text-gray-700">La monnaie locale est le Lari géorgien (GEL). Il est conseillé d'avoir un peu de liquide pour les petits achats.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🗣️ Langue</p>
+                                <p class="text-gray-700">Le géorgien est la langue officielle. Le russe est souvent parlé par les générations plus âgées, et l'anglais par les jeunes et dans les zones touristiques.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-2" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 2</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Envol vers la Svanétie et découverte de Mestia</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Quittez la capitale pour vous envoler vers les majestueuses montagnes du Caucase. Un court vol vous mènera à Mestia, le cœur de la Svanétie. Installez-vous dans ce village emblématique et commencez à explorer ses tours médiévales.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>✈️ <strong>Vol Tbilissi - Mestia</strong>: Prenez un vol matinal depuis l'aéroport de Natakhtari (près de Tbilissi) vers Mestia. Ce vol panoramique offre des vues spectaculaires sur le Caucase et dure environ 1 heure.</li><li>🛏️ <strong>Installation dans une guesthouse svane</strong>: À votre arrivée à Mestia, rejoignez votre hébergement. Les guesthouses locales offrent une immersion authentique dans la culture svane.</li><li>🚶‍♀️ <strong>Exploration du centre de Mestia</strong>: Promenez-vous dans le village, admirez les célèbres tours de défense svanes et imprégnez-vous de l'atmosphère unique de cette région montagneuse.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Ushguli-georgie-9vl1oe897ey77ne/main/jour2.jpg" class="w-full h-64 object-cover" alt="Jour 2">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">⚠️ Conseil</p>
+                                <p class="text-gray-700">Les vols vers Mestia sont souvent complets et dépendent des conditions météorologiques. Réservez à l'avance et prévoyez une alternative (marshrutka) en cas d'annulation.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🎒 Équipement</p>
+                                <p class="text-gray-700">Prévoyez des chaussures de marche confortables et des vêtements adaptés aux variations de température en montagne.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-3" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 3</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Trésors culturels et naturels de Mestia</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Plongez au cœur de l'histoire et de la nature svane. Visitez le musée local pour comprendre la richesse culturelle de la région, puis partez à l'aventure vers le glacier de Chalaadi, une expérience rafraîchissante au pied des sommets.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🏛️ <strong>Visite du Musée d'Histoire et d'Ethnographie de Svanétie</strong>: Découvrez les trésors archéologiques, les icônes médiévales et les objets ethnographiques qui racontent l'histoire fascinante du peuple svane.</li><li>🚶‍♂️ <strong>Randonnée vers le glacier de Chalaadi</strong>: Empruntez un taxi pour le point de départ de la randonnée (environ 30 min de Mestia), puis marchez à travers une forêt luxuriante jusqu'à la langue du glacier. Une marche facile et gratifiante.</li><li>🍽️ <strong>Dégustation de cuisine svane</strong>: Savourez un dîner typique dans une guesthouse, avec des spécialités comme le Kubdari (pain farci à la viande) et le Tashmijabi (purée de pommes de terre au fromage).</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Ushguli-georgie-9vl1oe897ey77ne/main/jour3.jpg" class="w-full h-64 object-cover" alt="Jour 3">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚶‍♀️ Randonnée</p>
+                                <p class="text-gray-700">La randonnée vers Chalaadi est de niveau facile à modéré, accessible à la plupart. Prévoyez environ 2-3 heures aller-retour depuis le parking.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🍲 Gastronomie</p>
+                                <p class="text-gray-700">La cuisine svane est copieuse et savoureuse, parfaite pour reprendre des forces après une journée d'exploration.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-4" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 4</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Voyage vers Ushguli, le village hors du temps</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Aujourd'hui, l'aventure vous mène vers Ushguli, l'un des plus hauts villages habités d'Europe et classé au patrimoine mondial de l'UNESCO. Le trajet en 4x4 est une expérience en soi, révélant des paysages à couper le souffle avant d'atteindre ce lieu mythique.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🚗 <strong>Trajet en 4x4 vers Ushguli</strong>: Louez un 4x4 avec chauffeur à Mestia pour le trajet d'environ 2-3 heures. La route est pittoresque mais parfois difficile, offrant des vues imprenables sur les vallées et les montagnes.</li><li>🛏️ <strong>Installation dans une guesthouse à Ushguli</strong>: À votre arrivée, installez-vous dans l'une des guesthouses traditionnelles du village. L'accueil y est chaleureux et authentique.</li><li>🚶‍♀️ <strong>Découverte du village de Chazhashi</strong>: Promenez-vous dans le quartier de Chazhashi, l'un des quatre villages qui composent Ushguli, et admirez ses tours de défense médiévales parfaitement conservées.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Ushguli-georgie-9vl1oe897ey77ne/main/jour4.jpg" class="w-full h-64 object-cover" alt="Jour 4">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">UNESCO Patrimoine Mondial</p>
+                                <p class="text-gray-700">Ushguli est inscrit au patrimoine mondial de l'UNESCO pour ses tours de défense uniques et son paysage culturel exceptionnel.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💰 Transport</p>
+                                <p class="text-gray-700">Le coût du 4x4 pour Ushguli peut être partagé avec d'autres voyageurs pour réduire les frais.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-5" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 5</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Randonnée vers le glacier de Shkhara</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Une journée dédiée à la randonnée au cœur des paysages grandioses d'Ushguli. Partez à la conquête du sentier menant au pied du mont Shkhara, le plus haut sommet de Géorgie. Une immersion totale dans la nature sauvage du Caucase.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🚶‍♂️ <strong>Randonnée vers le glacier de Shkhara</strong>: Empruntez le sentier qui longe la rivière Enguri. Cette randonnée d'environ 4-5 heures aller-retour vous mènera au pied du majestueux glacier de Shkhara, offrant des vues spectaculaires.</li><li>⛪ <strong>Visite de l'église Lamaria</strong>: Sur le chemin du retour, faites une halte à l'église de Lamaria, perchée sur une colline. Elle offre un panorama exceptionnel sur Ushguli et les montagnes environnantes.</li><li>🌅 <strong>Coucher de soleil sur les tours</strong>: Profitez de la fin de journée pour admirer le coucher de soleil qui illumine les tours d'Ushguli, créant une atmosphère magique et intemporelle.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Ushguli-georgie-9vl1oe897ey77ne/main/jour5.jpg" class="w-full h-64 object-cover" alt="Jour 5">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🥾 Niveau de la randonnée</p>
+                                <p class="text-gray-700">La randonnée vers Shkhara est de niveau modéré. Prévoyez de l'eau, des en-cas et une protection solaire.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🐎 Option</p>
+                                <p class="text-gray-700">Il est possible de louer un cheval pour une partie du trajet vers le glacier, offrant une expérience différente.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-6" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 6</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Villages authentiques et retour à Mestia</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Après une dernière matinée à Ushguli, explorez les villages voisins qui jalonnent la route du retour vers Mestia. Chaque village révèle son propre charme et ses tours ancestrales, offrant un aperçu plus profond de la vie svane.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🚶‍♀️ <strong>Exploration des autres quartiers d'Ushguli</strong>: Avant de partir, découvrez les villages de Murqmeli et Zhibiani, moins fréquentés mais tout aussi charmants, avec leurs propres tours et églises.</li><li>🚗 <strong>Retour vers Mestia avec arrêts</strong>: Reprenez un 4x4 pour Mestia. Demandez à votre chauffeur de faire des arrêts dans les villages d'Iprari et Kala pour admirer leurs fresques médiévales et leurs tours.</li><li>🍽️ <strong>Dîner et repos à Mestia</strong>: Après cette journée riche en découvertes, profitez d'un bon repas et d'une nuit de repos bien méritée à Mestia.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Ushguli-georgie-9vl1oe897ey77ne/main/jour6.jpg" class="w-full h-64 object-cover" alt="Jour 6">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">📸 Photographie</p>
+                                <p class="text-gray-700">Les villages entre Ushguli et Mestia sont des lieux parfaits pour la photographie, avec leurs paysages et architectures uniques.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🤝 Interaction</p>
+                                <p class="text-gray-700">N'hésitez pas à saluer les habitants. Les Svanes sont connus pour leur hospitalité.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-7" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 7</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Les Lacs de Koruldi et panoramas du Caucase</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Une journée dédiée à une randonnée emblématique offrant des vues panoramiques sur les plus hauts sommets de Svanétie, dont l'Ushba et le Tetnuldi. Les Lacs de Koruldi sont une récompense visuelle après l'effort, un miroir des géants du Caucase.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🚶‍♂️ <strong>Randonnée aux Lacs de Koruldi</strong>: Partez pour une randonnée exigeante mais incroyablement gratifiante. Le sentier monte depuis Mestia (ou un taxi peut vous emmener à un point de départ plus élevé) jusqu'à ces lacs alpins, offrant des vues à 360° sur les sommets emblématiques.</li><li>🧺 <strong>Pique-nique avec vue</strong>: Préparez un pique-nique pour le déjeuner et savourez-le au bord des lacs, face à un panorama à couper le souffle. Un moment de sérénité absolue.</li><li>☕ <strong>Détente à Mestia</strong>: De retour à Mestia, détendez-vous dans un café local, sirotez un thé ou un café et revivez les moments forts de votre aventure en Svanétie.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Ushguli-georgie-9vl1oe897ey77ne/main/jour7.jpg" class="w-full h-64 object-cover" alt="Jour 7">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💪 Difficulté</p>
+                                <p class="text-gray-700">La randonnée aux Lacs de Koruldi est considérée comme modérée à difficile, avec un dénivelé important. Une bonne condition physique est recommandée.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">☀️ Météo</p>
+                                <p class="text-gray-700">La météo en montagne peut changer rapidement. Prévoyez des couches de vêtements et un imperméable.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-8" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 8</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Retour à Tbilissi et exploration urbaine</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Quittez les montagnes pour retrouver l'effervescence de la capitale géorgienne. Après le voyage, plongez dans l'histoire de Tbilissi en explorant sa vieille ville, ses églises et ses forteresses, témoins d'un passé riche et mouvementé.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>✈️ <strong>Vol Mestia - Tbilissi</strong>: Reprenez un vol matinal de Mestia vers Tbilissi. Profitez une dernière fois des vues aériennes sur le Caucase.</li><li>🚶‍♀️ <strong>Découverte de la Vieille Ville de Tbilissi</strong>: Flânez dans les ruelles pavées, admirez les églises anciennes comme Sioni et Anchiskhati, et imprégnez-vous de l'ambiance unique du quartier.</li><li>🚠 <strong>Montée à la Forteresse de Narikala</strong>: Prenez le téléphérique pour atteindre la forteresse de Narikala. De là, profitez d'une vue panoramique imprenable sur toute la ville de Tbilissi, de jour comme de nuit.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Ushguli-georgie-9vl1oe897ey77ne/main/jour8.jpg" class="w-full h-64 object-cover" alt="Jour 8">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚌 Alternative</p>
+                                <p class="text-gray-700">Si le vol n'est pas disponible, un trajet en marshrutka (minibus) de Mestia à Tbilissi dure environ 8-9 heures.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💡 Astuce</p>
+                                <p class="text-gray-700">La forteresse de Narikala est particulièrement belle au coucher du soleil, lorsque la ville s'illumine.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-9" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 9</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Bains de soufre et modernité de Tbilissi</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Une journée pour se détendre et explorer les contrastes de Tbilissi. Commencez par une expérience unique dans les célèbres bains de soufre, puis découvrez l'architecture moderne et les quartiers animés de la ville, entre tradition et innovation.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>♨️ <strong>Détente aux bains de soufre d'Abanotubani</strong>: Offrez-vous un moment de relaxation dans les bains de soufre historiques. Optez pour un bain public ou une salle privée pour une expérience plus intime et un massage traditionnel.</li><li>🌉 <strong>Traversée du Pont de la Paix</strong>: Admirez cette structure moderne en verre et acier qui enjambe la rivière Koura, reliant la vieille ville aux quartiers plus contemporains. Un symbole de la Tbilissi nouvelle.</li><li>🛍️ <strong>Exploration de l'avenue Roustavéli</strong>: Promenez-vous sur l'artère principale de Tbilissi, bordée de bâtiments historiques, de théâtres, de musées et de boutiques. Idéal pour une dernière session de shopping ou un café.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Ushguli-georgie-9vl1oe897ey77ne/main/jour9.jpg" class="w-full h-64 object-cover" alt="Jour 9">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🧖‍♀️ Bains</p>
+                                <p class="text-gray-700">Les bains de soufre sont une tradition ancestrale à Tbilissi. Réservez à l'avance, surtout si vous souhaitez une salle privée.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🎁 Souvenirs</p>
+                                <p class="text-gray-700">L'avenue Roustavéli et les rues de la vieille ville regorgent de boutiques d'artisanat local et de souvenirs.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-10" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 10</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Départ de Tbilissi</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Après un séjour riche en découvertes et en émotions, il est temps de quitter la Géorgie. Profitez d'un dernier petit-déjeuner géorgien avant de vous rendre à l'aéroport pour votre vol retour vers Paris, emportant avec vous des souvenirs inoubliables de la Svanétie et de Tbilissi.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🥐 <strong>Dernier petit-déjeuner géorgien</strong>: Savourez un dernier Khachapuri ou un autre plat local avant de partir.</li><li>🛬 <strong>Transfert à l'aéroport de Tbilissi</strong>: Prenez un taxi ou le bus pour l'aéroport international de Tbilissi.</li><li>🛫 <strong>Vol retour vers Paris</strong>: Embarquez pour votre vol, la tête pleine de souvenirs des montagnes du Caucase et de l'hospitalité géorgienne.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Ushguli-georgie-9vl1oe897ey77ne/main/jour10.jpg" class="w-full h-64 object-cover" alt="Jour 10">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">⏰ Heure de départ</p>
+                                <p class="text-gray-700">Prévoyez suffisamment de temps pour le transfert à l'aéroport et les formalités d'enregistrement, surtout aux heures de pointe.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">✈️ Bagages</p>
+                                <p class="text-gray-700">Vérifiez les restrictions de bagages de votre compagnie aérienne, surtout si vous avez fait des achats.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+        </div>
+    </section>
+
+    <section id="pratique" class="bg-white border-t border-gray-200 pt-12 pb-12 scroll-mt-24">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>💴</span> Budget
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget vol: </strong>550 €/pers (Vol Paris-Tbilissi A/R + Vol Tbilissi-Mestia A/R)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget transports: </strong>200 €/pers (Marshrutkas, taxis locaux, 4x4 Mestia-Ushguli A/R)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget repas: </strong>405 €/pers (9 jours à 45 €/jour pour repas variés)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget logement: </strong>630 €/pers (9 nuits en hôtels 3 étoiles/guesthouses à 70 €/nuit)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget activités: </strong>150 €/pers (Musées, bains de soufre, téléphérique, petites excursions)</p>
+                
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>☀️</span> Périodes Idéales
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">Les périodes idéales pour ce séjour sont les mois de juin, juillet, août et septembre.</p>
+                
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>📃</span> Infos pratiques
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">👥 La Svanétie est habitée par les Svanes, un groupe ethnique géorgien avec une culture, une langue (le svane) et des traditions uniques, notamment leurs tours de défense médiévales.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">🍷 La Géorgie est réputée pour son hospitalité légendaire, sa cuisine délicieuse et ses vins millénaires. N'hésitez pas à interagir avec les locaux.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">🏰 Les tours de Svanétie, emblèmes de la région, servaient de refuges et de tours de guet. Elles sont le symbole d'une société montagnarde autonome et résiliente.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">💸 Le pourboire est apprécié en Géorgie, notamment dans les restaurants et pour les chauffeurs. Un 10% est généralement suffisant.</p>
+                
+            </div>            
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>🔗</span> Liens Utiles
+                </h4>
+                <ul class="text-sm space-y-3">
+                  <li><a href="https://mytripplanner-dotfr.github.io/Ushguli-georgie-9vl1oe897ey77ne/map.html" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>🗺️ Carte Interactive</strong></a></li>
+                    
+                        <li><a href="https://www.google.com/travel/flights?hl=fr&gl=fr&curr=EUR" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>📘 Google Flights</strong></a></li>
+                    
+                        <li><a href="https://georgia.travel/" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>📘 Georgian National Tourism Administration</strong></a></li>
+                    
+                        <li><a href="https://www.accuweather.com/fr/ge/georgia-weather" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>🌤️ Météo en Géorgie</strong></a></li>
+                    
+                        <li><a href="https://vanillasky.ge/" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>✈️ Vanilla Sky (vols Mestia)</strong></a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 border-t border-slate-200 py-6">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <p class="font-serif text-lg text-template-roche mb-2 font-bold">
+                MyTrip<span class="text-template-ocre">Planner</span>
+            </p>
+
+                <div class="flex justify-center gap-4 text-[10px] md:text-xs text-slate-500 mb-4 font-semibold">
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">Mentions Légales</a>
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">CGU</a>
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">Confidentialité</a>
+                </div>
+
+            <p class="text-[10px] text-gray-400 mb-2">
+                &copy; 2025 MyTripPlanner. Tous droits réservés.
+            </p>
+
+            <div class="flex justify-center">
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest px-2 py-0.5 border border-gray-200 rounded-full inline-block">
+                    🤖 Contenu généré par IA
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion Scroll & Menu
+        const navDesktop = document.getElementById('nav-desktop');
+        const navMobile = document.getElementById('nav-mobile');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                navDesktop.classList.remove('-translate-y-full');
+                navMobile.classList.remove('-translate-y-full');
+            } else {
+                navDesktop.classList.add('-translate-y-full');
+                navMobile.classList.add('-translate-y-full');
+            }
+        });
+        
+        // Active Link Highlighter
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const activeId = entry.target.id;
+                    document.querySelectorAll('.mobile-link').forEach(link => {
+                        const linkHref = link.getAttribute('href').substring(1);
+                        if (linkHref === activeId) {
+                            link.classList.remove('bg-gray-100', 'text-gray-700');
+                            link.classList.add('bg-template-ocre', 'text-white', 'shadow-md');
+                            link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        } else {
+                            link.classList.add('bg-gray-100', 'text-gray-700');
+                            link.classList.remove('bg-template-ocre', 'text-white', 'shadow-md');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-40% 0px -60% 0px' });
+
+        document.querySelectorAll('div[id^="jour-"], section#pratique').forEach(s => observer.observe(s));
+    </script>
+</body>
+</html>
